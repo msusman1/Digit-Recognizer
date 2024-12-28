@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.msusman.digitrecognizer"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.msusman.digitrecognizer"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -37,6 +37,9 @@ android {
     buildFeatures {
         compose = true
     }
+    aaptOptions {
+        noCompress("tflite")
+    }
 }
 
 dependencies {
@@ -49,6 +52,10 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("com.google.mediapipe:tasks-vision:0.10.14")
+    implementation("org.tensorflow:tensorflow-lite:2.16.1")
+    implementation("org.tensorflow:tensorflow-lite-gpu:2.16.1")
+    implementation("com.google.android.gms:play-services-tasks:18.2.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
